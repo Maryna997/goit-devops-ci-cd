@@ -79,6 +79,7 @@ module "jenkins" {
   cluster_name      = module.eks.eks_cluster_name
   oidc_provider_arn = module.eks.oidc_provider_arn
   oidc_provider_url = module.eks.oidc_provider_url
+  admin_password    = var.admin_password
   github_pat        = var.github_pat
   github_user       = var.github_user
   github_repo_url   = var.github_repo_url

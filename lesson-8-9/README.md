@@ -38,7 +38,7 @@ Prints Jenkins / Argo CD / Django endpoints.
 sh ./scripts/show_passwords.sh
 ```
 
-- Jenkins: `admin / admin123` (unless changed)
+- Jenkins: `admin / <password provided via Terraform variable admin_password>`
 - Argo CD: `admin / <printed password>`
 
 ### 4) Configure kubectl

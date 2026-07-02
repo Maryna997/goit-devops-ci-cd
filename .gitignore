@@ -24,3 +24,5 @@ Thumbs.db
 htmlcov/
 
 *.pid
+
+lesson-8-9/terraform.tfvars

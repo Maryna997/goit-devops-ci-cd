@@ -26,6 +26,12 @@ variable "repository_name" {
   default     = "ecr-repo-lesson-8-9"
 }
 
+variable "admin_password" {
+  description = "Jenkins admin password"
+  type        = string
+  sensitive   = true
+}
+
 // github credentials
 
 variable "github_pat" {

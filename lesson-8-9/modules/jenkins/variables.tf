@@ -18,6 +18,12 @@ variable "oidc_provider_url" {
   type = string
 }
 
+variable "admin_password" {
+  description = "Jenkins admin password"
+  type        = string
+  sensitive   = true
+}
+
 // github credentials
 
 variable "github_pat" {
