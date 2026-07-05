@@ -17,6 +17,8 @@ applications:
       automated:
         prune: true
         selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
 
 repositories:
   - name: example-app

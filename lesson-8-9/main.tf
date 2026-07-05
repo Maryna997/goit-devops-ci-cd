@@ -27,13 +27,13 @@ provider "aws" {
 
 module "vpc" {
   source             = "./modules/vpc"
-  vpc_cidr_block     = "10.0.0.0/16"
-  public_subnets     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  private_subnets    = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"] 
+  vpc_cidr_block     = var.vpc_cidr_block
+  public_subnets     = var.public_subnets
+  private_subnets    = var.private_subnets
+  availability_zones = var.availability_zones
   vpc_name           = var.vpc_name
 }
-
+ 
 module "ecr" {
   source          = "./modules/ecr"
   repository_name = var.repository_name
@@ -45,9 +45,9 @@ module "eks" {
   cluster_name  = var.cluster_name
   subnet_ids    = module.vpc.public_subnets
   instance_type = var.instance_type
-  desired_size  = 2
-  max_size      = 3
-  min_size      = 1
+  desired_size  = var.desired_size
+  max_size      = var.max_size
+  min_size      = var.min_size
 }
 
 data "aws_eks_cluster" "eks" {
@@ -92,7 +92,12 @@ module "jenkins" {
 
 module "argo_cd" {
   source        = "./modules/argo_cd"
-  namespace     = "argocd"
-  chart_version = "5.46.4"
+  namespace     = var.argocd_namespace
+  chart_version = var.argocd_chart_version
   depends_on    = [module.eks]
+
+  providers = {
+    helm       = helm
+    kubernetes = kubernetes
+  }
 }

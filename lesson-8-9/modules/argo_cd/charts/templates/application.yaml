@@ -22,5 +22,9 @@ spec:
     automated:
       prune: {{ .syncPolicy.automated.prune }}
       selfHeal: {{ .syncPolicy.automated.selfHeal }}
+    syncOptions:
+      {{- range .syncPolicy.syncOptions }}
+      - {{ . }}
+      {{- end }}
 ---
 {{- end }}

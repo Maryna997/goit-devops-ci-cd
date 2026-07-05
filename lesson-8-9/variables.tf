@@ -48,3 +48,54 @@ variable "github_repo_url" {
   description = "GitHub repository name"
   type        = string
 }
+
+// vpc 
+
+variable "vpc_cidr_block" {
+  description = "CIDR block for VPC"
+  type        = string
+}
+
+variable "public_subnets" {
+  description = "List of public subnet CIDRs"
+  type        = list(string)
+}
+
+variable "private_subnets" {
+  description = "List of private subnet CIDRs"
+  type        = list(string)
+}
+
+variable "availability_zones" {
+  description = "Availability zones"
+  type        = list(string)
+}
+
+// eks
+
+variable "desired_size" {
+  description = "Desired number of worker nodes"
+  type        = number
+}
+
+variable "max_size" {
+  description = "Maximum number of worker nodes"
+  type        = number
+}
+
+variable "min_size" {
+  description = "Minimum number of worker nodes"
+  type        = number
+}
+
+// argo_cd
+
+variable "argocd_namespace" {
+  description = "Namespace for Argo CD"
+  type        = string
+}
+
+variable "argocd_chart_version" {
+  description = "Argo CD Helm chart version"
+  type        = string
+}
