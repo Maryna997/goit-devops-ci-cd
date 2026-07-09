@@ -119,9 +119,10 @@ module "rds" {
   vpc_id                  = module.vpc.vpc_id
   multi_az                = var.rds_multi_az
   backup_retention_period = var.rds_backup_retention_period
-  parameters              = {
-    max_connections            = "200"
-    log_min_duration_statement = "500"
+  parameters = {
+  max_connections   = "200"
+  log_statement     = "all"   
+  work_mem          = "4096"    # in KB
   }
 
   tags = {
