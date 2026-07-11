@@ -51,8 +51,8 @@ resource "aws_ecr_repository_policy" "ecr_policy" {
 }
 
 
-resource "aws_ecr_lifecycle_policy" "this" {
-  repository = aws_ecr_repository.this.name
+resource "aws_ecr_lifecycle_policy" "ecr" {
+  repository = aws_ecr_repository.ecr.name
 
   policy = jsonencode({
     rules = [

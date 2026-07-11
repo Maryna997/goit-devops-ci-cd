@@ -2,7 +2,6 @@ image:
   repository: 810738286133.dkr.ecr.us-west-2.amazonaws.com/ecr-repo-final-project
   tag: latest
   pullPolicy: IfNotPresent
-#  pullPolicy: Always
 
 service:
   type: LoadBalancer
@@ -12,21 +11,21 @@ ingress:
   enabled: false
 
 config:
-  POSTGRES_HOST: django-postgresql
-  POSTGRES_PORT: 5432
-  POSTGRES_DB: django_db
-  POSTGRES_USER: django_user
-  POSTGRES_PASSWORD: pass12345
+  POSTGRES_HOST: ""
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: ""
+  POSTGRES_USER: ""
+  POSTGRES_NAME: ""
+  POSTGRES_URL: ""
+  DATABASE_URL: ""
 
-postgresql:
-  enabled: true
-  global:
-    postgresql:
-      auth:
-        postgresPassword: pass12345
-        username: django_user
-        database: django_db
-        password: pass12345
-  primary:
-    persistence:
-      size: 2Gi
+secrets:
+  POSTGRES_PASSWORD: ""
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"

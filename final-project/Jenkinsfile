@@ -28,7 +28,6 @@ spec:
   }
 
   environment {
-    ECR_REGISTRY = "810738286133.dkr.ecr.us-west-2.amazonaws.com"
     IMAGE_NAME   = "ecr-repo-final-project"
     IMAGE_TAG    = "v1.0.${BUILD_NUMBER}"
 
@@ -67,7 +66,7 @@ spec:
               git clone https://${github_user}:${github_pat}@github.com/${github_user}/goit-devops-ci-cd.git
               cd goit-devops-ci-cd
               git checkout final-project
-              cd charts/django-app
+              cd final-project/charts/django-app
 
               sed -i "s/tag: .*/tag: $IMAGE_TAG/" values.yaml
 

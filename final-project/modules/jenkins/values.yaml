@@ -2,6 +2,9 @@ controller:
   admin:
     username: admin
     password: ${admin_password}
+  containerEnv:
+    - name: ECR_REGISTRY
+      value: ${ecr_registry}
 
   serviceType: LoadBalancer
   servicePort: 80

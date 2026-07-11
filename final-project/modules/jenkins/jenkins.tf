@@ -92,6 +92,7 @@ resource "helm_release" "jenkins" {
     admin_password = var.admin_password
     github_user    = var.github_user
     github_pat     = var.github_pat
+    ecr_registry   = var.ecr_registry
   })
 ]
 }

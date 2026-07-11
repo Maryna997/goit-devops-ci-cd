@@ -41,3 +41,9 @@ variable "github_repo_url" {
   description = "GitHub repository URL"
   type        = string
 }
+
+
+variable "ecr_registry" {
+  description = "ECR registry hostname"
+  type        = string
+}

@@ -71,7 +71,7 @@ spec:
 
                             git checkout lesson-8-9
 
-                            cd charts/django-app
+                            cd lesson-8-9/charts/django-app
 
                             sed -i "s/tag: .*/tag: $IMAGE_TAG/" values.yaml
 

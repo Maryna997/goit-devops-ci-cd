@@ -67,7 +67,7 @@ spec:
               git clone https://${github_user}:${github_pat}@github.com/${github_user}/goit-devops-ci-cd.git
               cd goit-devops-ci-cd
               git checkout lesson-db-module
-              cd charts/django-app
+              cd lesson-db-module/charts/django-app
 
               sed -i "s/tag: .*/tag: $IMAGE_TAG/" values.yaml
 

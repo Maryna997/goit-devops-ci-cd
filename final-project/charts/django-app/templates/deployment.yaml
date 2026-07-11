@@ -21,6 +21,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Release.Name }}-config
+          {{- if .Values.secrets }}
+            - secretRef:
+                name: {{ .Release.Name }}-secret
+          {{- end }}
 
           # --- NEW: let DNS/DB become reachable before we go Ready ---
           # Startup: wait for DNS resolution of POSTGRES_HOST
@@ -69,3 +73,11 @@ spec:
               port: {{ .Values.service.port }}
             initialDelaySeconds: 20
             periodSeconds: 10
+
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}

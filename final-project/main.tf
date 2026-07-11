@@ -23,6 +23,12 @@ provider "aws" {
   region = var.region
 }
 
+module "s3_backend" {
+  source      = "./modules/s3-backend"
+  bucket_name = "terraform-state-bucket-30062026113045"
+  table_name  = "terraform-locks"
+} 
+
 module "vpc" {
   source             = "./modules/vpc"
   vpc_cidr_block     = var.vpc_cidr_block
@@ -42,7 +48,7 @@ module "ecr" {
 module "eks" {
   source        = "./modules/eks"
   cluster_name  = var.cluster_name
-  subnet_ids    = module.vpc.public_subnets
+  subnet_ids    = module.vpc.private_subnets
   instance_type = var.instance_type
   desired_size  = var.desired_size
   max_size      = var.max_size
@@ -90,6 +96,7 @@ module "jenkins" {
   github_pat        = var.github_pat
   github_user       = var.github_user
   github_repo_url   = var.github_repo_url
+  ecr_registry = module.ecr.registry_url
   depends_on        = [module.eks]
   providers         = {
     helm       = helm
